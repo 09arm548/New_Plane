@@ -35,22 +35,23 @@
 
         'shows map
         lstMap.Items.Clear()
-        Select Case txtSeatNum.Text
-            Case 0 To 9
-                assignSeat()
-        End Select
-        Select Case txtSeatNum.Text
-            Case 10 To 19
-                assignSeat1()
-        End Select
-        Select Case txtSeatNum.Text
-            Case 20 To 29
-                assignSeat2()
-        End Select
-        Select Case txtSeatNum.Text
-            Case 30 To 39
-                assignSeat3()
-        End Select
+
+        'Select Case txtSeatNum.Text
+        '    Case 0 To 9
+        '        assignSeat()
+        'End Select
+        'Select Case txtSeatNum.Text
+        '    Case 10 To 19
+        '        assignSeat1()
+        'End Select
+        'Select Case txtSeatNum.Text
+        '    Case 20 To 29
+        '        assignSeat2()
+        'End Select
+        'Select Case txtSeatNum.Text
+        '    Case 30 To 39
+        '        assignSeat3()
+        'End Select
         For i As Integer = 0 To 9
             lstMap.Items.Add(strSeat(i, 0) & "          " & strSeat(i, 1) & "                 " & strSeat(i, 2) & "           " & strSeat(i, 3))
         Next
@@ -193,23 +194,7 @@
             intFull = intFull + 1
         End If
     End Sub
-
-    Private Sub btnBookSeat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBookSeat.Click
-        If intFull = 3 Then
-            strStandby(0) = txtName.Text
-            MessageBox.Show(strStandby(0))
-        Else
-            MessageBox.Show("kk")
-        End If
-        'Dim intSum As Integer
-        'Dim element As Integer
-
-        'For Each element In strSeat
-
-        '    intSum = intSum + element
-
-        'Next element
-        'MessageBox.Show(intSum)
+    Sub Standby()
         lstMap.Items.Clear()
         Select Case txtSeatNum.Text
             Case 0 To 9
@@ -230,7 +215,28 @@
         For i As Integer = 0 To 9
             lstMap.Items.Add(strSeat(i, 0) & "          " & strSeat(i, 1) & "                 " & strSeat(i, 2) & "           " & strSeat(i, 3))
         Next
+    End Sub
+    Private Sub btnBookSeat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBookSeat.Click
 
+        If intFull <> 1 Then
+            Standby()
+        Else
+            strStandby(0) = txtName.Text
+            lstStandby.Items.Add(strStandby(0))
+        End If
 
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        'txtName
+        intFull = intFull - 1
+        'txtName.Text = strStandby(0)
+        'txtSeatnum.text
+        If intFull <> 1 Then
+            Standby()
+        Else
+            strStandby(0) = txtName.Text
+            lstStandby.Items.Add(strStandby(0))
+        End If
     End Sub
 End Class

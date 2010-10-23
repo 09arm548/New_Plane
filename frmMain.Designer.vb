@@ -29,11 +29,13 @@ Partial Class frmMain
         Me.btnBookSeat = New System.Windows.Forms.Button()
         Me.lblSeat = New System.Windows.Forms.Label()
         Me.lblName = New System.Windows.Forms.Label()
+        Me.lstStandby = New System.Windows.Forms.ListBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnMap
         '
-        Me.btnMap.Location = New System.Drawing.Point(542, 266)
+        Me.btnMap.Location = New System.Drawing.Point(433, 259)
         Me.btnMap.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnMap.Name = "btnMap"
         Me.btnMap.Size = New System.Drawing.Size(106, 34)
@@ -54,7 +56,7 @@ Partial Class frmMain
         '
         'txtSeatNum
         '
-        Me.txtSeatNum.Location = New System.Drawing.Point(299, 266)
+        Me.txtSeatNum.Location = New System.Drawing.Point(190, 259)
         Me.txtSeatNum.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSeatNum.Name = "txtSeatNum"
         Me.txtSeatNum.Size = New System.Drawing.Size(132, 22)
@@ -62,7 +64,7 @@ Partial Class frmMain
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(297, 356)
+        Me.txtName.Location = New System.Drawing.Point(188, 349)
         Me.txtName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(132, 22)
@@ -70,7 +72,7 @@ Partial Class frmMain
         '
         'btnBookSeat
         '
-        Me.btnBookSeat.Location = New System.Drawing.Point(542, 356)
+        Me.btnBookSeat.Location = New System.Drawing.Point(433, 339)
         Me.btnBookSeat.Name = "btnBookSeat"
         Me.btnBookSeat.Size = New System.Drawing.Size(106, 32)
         Me.btnBookSeat.TabIndex = 4
@@ -80,7 +82,7 @@ Partial Class frmMain
         'lblSeat
         '
         Me.lblSeat.AutoSize = True
-        Me.lblSeat.Location = New System.Drawing.Point(145, 266)
+        Me.lblSeat.Location = New System.Drawing.Point(36, 259)
         Me.lblSeat.Name = "lblSeat"
         Me.lblSeat.Size = New System.Drawing.Size(129, 17)
         Me.lblSeat.TabIndex = 5
@@ -89,17 +91,37 @@ Partial Class frmMain
         'lblName
         '
         Me.lblName.AutoSize = True
-        Me.lblName.Location = New System.Drawing.Point(148, 356)
+        Me.lblName.Location = New System.Drawing.Point(39, 349)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(83, 17)
         Me.lblName.TabIndex = 6
         Me.lblName.Text = "Enter Name"
+        '
+        'lstStandby
+        '
+        Me.lstStandby.FormattingEnabled = True
+        Me.lstStandby.ItemHeight = 16
+        Me.lstStandby.Location = New System.Drawing.Point(547, 29)
+        Me.lstStandby.Name = "lstStandby"
+        Me.lstStandby.Size = New System.Drawing.Size(120, 84)
+        Me.lstStandby.TabIndex = 7
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(433, 419)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(106, 30)
+        Me.btnCancel.TabIndex = 8
+        Me.btnCancel.Text = "Cancel Seat"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 476)
+        Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.lstStandby)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.lblSeat)
         Me.Controls.Add(Me.btnBookSeat)
@@ -121,5 +143,7 @@ Partial Class frmMain
     Friend WithEvents btnBookSeat As System.Windows.Forms.Button
     Friend WithEvents lblSeat As System.Windows.Forms.Label
     Friend WithEvents lblName As System.Windows.Forms.Label
+    Friend WithEvents lstStandby As System.Windows.Forms.ListBox
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
 
 End Class
