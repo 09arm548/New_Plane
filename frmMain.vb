@@ -194,6 +194,7 @@
             intFull = intFull + 1
         End If
     End Sub
+
     Sub bookSeat()
 
         lstMap.Items.Clear()
@@ -217,6 +218,7 @@
             lstMap.Items.Add(strSeat(i, 0) & "          " & strSeat(i, 1) & "                 " & strSeat(i, 2) & "           " & strSeat(i, 3))
         Next
     End Sub
+
     Sub Standby()
         If intFull = 3 Then
             strStandby(0) = txtName.Text
@@ -224,31 +226,46 @@
         ElseIf intFull = 4 Then
             strStandby(1) = txtName.Text
             lstStandby.Items.Add(strStandby(1))
+        ElseIf intFull = 5 Then
+            strStandby(2) = txtName.Text
+            lstStandby.Items.Add(strStandby(2))
+        ElseIf intFull = 6 Then
+            strStandby(3) = txtName.Text
+            lstStandby.Items.Add(strStandby(3))
         End If
 
     End Sub
+
     Private Sub btnBookSeat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBookSeat.Click
         intFull = intFull + 1
-        If intFull >= 3 Then 'this means full
+        If intFull = 3 Then 'this means full
             Standby()
+            intFull = 3
         Else
             bookSeat()
         End If
         TextBox1.Text = intFull
     End Sub
+
     Sub cancelSeat()
         MessageBox.Show("lkkj")
     End Sub
+
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         TextBox1.Text = intFull
-        If intFull = 3 Then 'if its full
-            txtName.Text = strStandby(0)
-            bookSeat()
-            lstStandby.Items.Remove(1)
-        ElseIf intFull = 4 Then
-            strStandby(1) = txtName.Text
-            lstStandby.Items.Add(strStandby(1))
-        End If
-
+        'If intFull = 3 Then 'if its full
+        '    txtName.Text = strStandby(0)
+        '    bookSeat()
+        '    lstStandby.Items.Remove(1)
+        'ElseIf intFull = 4 Then
+        '    strStandby(1) = txtName.Text
+        '    lstStandby.Items.Add(strStandby(1))
+        'End If
+        txtName.Text = strStandby(0)
+        bookSeat()
+        strStandby(0) = strStandby(2)
+        lstStandby.Items.Clear()
+        lstStandby.Items.Add(strStandby(3))
+        lstStandby.Items.Add(strStandby(4))
     End Sub
 End Class
