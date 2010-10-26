@@ -223,24 +223,28 @@
         If intFull = 3 Then
             strStandby(0) = txtName.Text
             lstStandby.Items.Add(strStandby(0))
+            intFull = intFull + 1
         ElseIf intFull = 4 Then
             strStandby(1) = txtName.Text
             lstStandby.Items.Add(strStandby(1))
+            intFull += 1
         ElseIf intFull = 5 Then
             strStandby(2) = txtName.Text
             lstStandby.Items.Add(strStandby(2))
+            intFull += 1
         ElseIf intFull = 6 Then
             strStandby(3) = txtName.Text
             lstStandby.Items.Add(strStandby(3))
+            intFull += 1
         End If
 
     End Sub
 
     Private Sub btnBookSeat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBookSeat.Click
-        intFull = intFull + 1
-        If intFull = 3 Then 'this means full
+        'intFull = intFull + 1
+        If intFull >= 3 Then 'this means full
             Standby()
-            intFull = 3
+            'intFull = 3
         Else
             bookSeat()
         End If
@@ -253,19 +257,20 @@
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         TextBox1.Text = intFull
-        'If intFull = 3 Then 'if its full
-        '    txtName.Text = strStandby(0)
-        '    bookSeat()
-        '    lstStandby.Items.Remove(1)
-        'ElseIf intFull = 4 Then
-        '    strStandby(1) = txtName.Text
-        '    lstStandby.Items.Add(strStandby(1))
-        'End If
+        If intFull = 3 Then 'if its full
+            txtName.Text = strStandby(0)
+            bookSeat()
+            lstStandby.Items.Clear()
+            lstStandby.Items.Add(strStandby(1))
+        ElseIf intFull = 4 Then
+            strStandby(1) = txtName.Text
+            lstStandby.Items.Add(strStandby(1))
+        End If
         txtName.Text = strStandby(0)
         bookSeat()
         strStandby(0) = strStandby(2)
-        lstStandby.Items.Clear()
-        lstStandby.Items.Add(strStandby(3))
-        lstStandby.Items.Add(strStandby(4))
+        ' lstStandby.Items.Clear()
+        'lstStandby.Items.Add(strStandby(3))
+        'lstStandby.Items.Add(strStandby(4))
     End Sub
 End Class
