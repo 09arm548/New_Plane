@@ -256,21 +256,32 @@
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+
         TextBox1.Text = intFull
-        If intFull = 3 Then 'if its full
+
+        If intFull >= 4 Then
             txtName.Text = strStandby(0)
+            lstStandby.Items.Remove(strStandby(0))
             bookSeat()
-            lstStandby.Items.Clear()
-            lstStandby.Items.Add(strStandby(1))
-        ElseIf intFull = 4 Then
-            strStandby(1) = txtName.Text
-            lstStandby.Items.Add(strStandby(1))
+            strStandby(0) = strStandby(1)
+        Else
+            txtName.Text = txtSeatNum.Text
+            bookSeat()
+            'If intFull = 5 Then
+            '    txtName.Text = strStandby(1)
+            '    lstStandby.Items.Remove(strStandby(1))
+            '    bookSeat()
+            '    If intFull = 6 Then
+            '        txtName.Text = strStandby(2)
+            '        lstStandby.Items.Remove(strStandby(2))
+            '        bookSeat()
+            '        If intFull = 7 Then
+            '            txtName.Text = strStandby(3)
+            '            lstStandby.Items.Remove(strStandby(3))
+            '            bookSeat()
         End If
-        txtName.Text = strStandby(0)
-        bookSeat()
-        strStandby(0) = strStandby(2)
-        ' lstStandby.Items.Clear()
-        'lstStandby.Items.Add(strStandby(3))
-        'lstStandby.Items.Add(strStandby(4))
+        '    End If
+        'End If
+        'End If
     End Sub
 End Class
