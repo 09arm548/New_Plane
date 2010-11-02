@@ -2,11 +2,10 @@
     Dim strSeat(9, 3) As String
     Dim intFull As Integer
     Dim strStandby(5) As String
+    Dim n As Integer
+    Dim c As Integer
 
     Private Sub btnMap_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMap.Click
-
-        Dim n As Integer
-        Dim c As Integer
 
         'build array
         For i As Integer = 0 To 9
@@ -36,22 +35,6 @@
         'shows map
         lstMap.Items.Clear()
 
-        'Select Case txtSeatNum.Text
-        '    Case 0 To 9
-        '        assignSeat()
-        'End Select
-        'Select Case txtSeatNum.Text
-        '    Case 10 To 19
-        '        assignSeat1()
-        'End Select
-        'Select Case txtSeatNum.Text
-        '    Case 20 To 29
-        '        assignSeat2()
-        'End Select
-        'Select Case txtSeatNum.Text
-        '    Case 30 To 39
-        '        assignSeat3()
-        'End Select
         For i As Integer = 0 To 9
             lstMap.Items.Add(strSeat(i, 0) & "          " & strSeat(i, 1) & "                 " & strSeat(i, 2) & "           " & strSeat(i, 3))
         Next
@@ -198,6 +181,7 @@
     End Sub
 
     Sub bookSeat()
+        'adds item to counter, selects where the seat is
         intFull += 1
         lstMap.Items.Clear()
         Select Case txtSeatNum.Text
@@ -216,12 +200,15 @@
             Case 30 To 39
                 assignSeat3()
         End Select
+
+        'updates map
         For i As Integer = 0 To 9
             lstMap.Items.Add(strSeat(i, 0) & "          " & strSeat(i, 1) & "                 " & strSeat(i, 2) & "           " & strSeat(i, 3))
         Next
     End Sub
 
     Sub Standby()
+        'puts people on standby when the plane is full
         If intFull = 3 Then
             strStandby(0) = txtName.Text
             lstStandby.Items.Add(strStandby(0))
@@ -243,23 +230,16 @@
     End Sub
 
     Private Sub btnBookSeat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBookSeat.Click
-        'intFull = intFull + 1
+
         If intFull >= 3 Then 'this means full
             Standby()
-            'intFull = 3
         Else
             bookSeat()
         End If
-        TextBox1.Text = intFull
-    End Sub
 
-    Sub cancelSeat()
-        MessageBox.Show("lkkj")
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-
-        TextBox1.Text = intFull
 
         If intFull >= 4 Then
             txtName.Text = strStandby(0)
@@ -269,8 +249,7 @@
         Else
             txtName.Text = txtSeatNum.Text
             bookSeat()
-           
         End If
-       
+
     End Sub
 End Class
